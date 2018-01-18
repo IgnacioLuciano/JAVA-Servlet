@@ -32,6 +32,7 @@ public class Application extends HttpServlet {
 		testHeaderID = request.getHeader(testHeaderID);
 		String responseText = "GET is used to read information information.";
 		response.getWriter().append(responseText);
+		response.setStatus(HttpServletResponse.SC_OK);
 		System.out.println("GET was called.");
 	}
 
@@ -41,6 +42,7 @@ public class Application extends HttpServlet {
 		testHeaderID = request.getHeader(testHeaderID);
 		String responseText = "Use this (PUT) to update information.";
 		response.getWriter().append(responseText);
+		response.setStatus(HttpServletResponse.SC_OK);
 		System.out.println("PUT was called.");
 	}
 
@@ -51,6 +53,7 @@ public class Application extends HttpServlet {
 		testHeaderID = request.getHeader(testHeaderID);
 		String responseText = ("Data can be created using this method (POST).");
 		response.getWriter().append(responseText);
+		response.setStatus(HttpServletResponse.SC_OK);
 		System.out.println("POST was called.");
 	}
 
@@ -61,6 +64,8 @@ public class Application extends HttpServlet {
 		testHeaderID = request.getHeader(testHeaderID);
 		String responseText = "Only use DELETE to remove the specified target.";
 		response.getWriter().append(responseText);
+		response.setStatus(HttpServletResponse.SC_OK);
+		response.sendError(HttpServletResponse.SC_NOT_FOUND, "Not found");
 		System.out.println("DELETE was called.");
 	}
 }
